@@ -4,7 +4,7 @@ A command-line interface for Life360 location tracking.
 
 ## Installation
 
-### From npm (when published)
+### From npm (recommended)
 
 ```bash
 npm install -g life360-cli
@@ -13,7 +13,7 @@ npm install -g life360-cli
 ### Local Setup
 
 ```bash
-git clone https://github.com/robl/life360-cli.git
+git clone https://github.com/rjlee/life360-cli.git
 cd life360-cli
 npm install
 npm run build
@@ -30,7 +30,7 @@ Life360 requires an authorization token. Get one manually:
 2. Enter your email address and click **Continue**
 3. Enter the one-time code sent to your email
 4. Open browser DevTools (**F12**) and switch to the **Network** tab
-5. Find the **POST** request named `token` (ignore OPTIONS)
+5. Find the **POST** request named `token`
 6. In **Preview** / **Response**, copy the value of `access_token`
 
 The token is a long string WITHOUT the word "Bearer" and WITHOUT spaces.
