@@ -48,8 +48,13 @@ jobs:
             echo "version=0.0.0" >> $GITHUB_OUTPUT
           fi
 
-      - name: NPM Publish
+      - name: Configure NPM authentication
         if: steps.version.outputs.version != '0.0.0'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+
+      - name: NPM Publish
+        if: steps.version.outputs.version != '0.0.0'
         run: npm publish --access public
