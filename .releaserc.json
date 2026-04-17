@@ -1,5 +1,6 @@
 {
   "branches": ["main"],
+  "repositoryUrl": "https://github.com/rjlee/life360-cli.git",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",

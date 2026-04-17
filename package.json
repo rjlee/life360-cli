@@ -25,11 +25,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robl/life360-cli.git"
+    "url": "https://github.com/rjlee/life360-cli.git"
   },
-  "homepage": "https://github.com/robl/life360-cli#readme",
+  "homepage": "https://github.com/rjlee/life360-cli#readme",
   "bugs": {
-    "url": "https://github.com/robl/life360-cli/issues"
+    "url": "https://github.com/rjlee/life360-cli/issues"
   },
   "engines": {
     "node": ">=20.18.1"
