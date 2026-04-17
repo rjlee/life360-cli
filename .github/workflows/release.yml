@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      packages: write
+      pages: write
     steps:
       - uses: actions/checkout@v4
 
@@ -29,30 +29,12 @@ jobs:
       - name: Run tests
         run: npm test || true
 
-      - name: Semantic Release
+      - name: Build package
+        run: npm run build
+
+      - name: Semantic Release (GitHub only)
         uses: cycjimmy/semantic-release-action@v4
         with:
           semantic_version: 24.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get latest version from Git tags
-        id: version
-        run: |
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-          if [ -n "$TAG" ]; then
-            VERSION=${TAG#v}
-            echo "version=$VERSION" >> $GITHUB_OUTPUT
-          else
-            echo "version=0.0.0" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Build package
-        if: steps.version.outputs.version != '0.0.0'
-        run: npm run build
-
-      - name: NPM Publish
-        if: steps.version.outputs.version != '0.0.0'
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
